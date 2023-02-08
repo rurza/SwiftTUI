@@ -16,6 +16,7 @@ final class Node {
 
     var state: [String: Any] = [:]
     var environment: ((inout EnvironmentValues) -> Void)?
+    var observables: [String: Any] = [:]
 
     var control: Control?
     weak var application: Application?

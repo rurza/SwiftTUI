@@ -6,12 +6,14 @@ struct Composed<I: View>: NodeBuilder {
 
     func buildNode(_ node: Node) {
         view.setupStateProperties(node: node)
+        view.setupObservedObjectProperties(node: node)
         view.setupEnvironmentProperties(node: node)
         node.addNode(at: 0, Node(nodeBuilder: view.body.nodeBuilder))
     }
 
     func updateNode(_ node: Node) {
         view.setupStateProperties(node: node)
+        view.setupObservedObjectProperties(node: node)
         view.setupEnvironmentProperties(node: node)
         node.nodeBuilder = self
         node.children[0].update(using: view.body.nodeBuilder)
